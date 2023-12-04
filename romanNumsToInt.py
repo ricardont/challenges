@@ -11,25 +11,12 @@ class Solution:
             "":0
         }
         res = 0     
-        # if  not (1 <= len(s) <= 15)  or not all( c in romanLttr for c in s) or res not in range(0,10000):
-        #     return None
-        skip=False
-        for i in range(0, len(s)):  
-            if skip:
-                skip=False
-                continue            
-            currentLetter = s[i]
-            if  i < len(s)-1 and (
-                                  (currentLetter == "I" and (s[i+1] in ["X","V"])) or
-                                  (currentLetter == "X" and (s[i+1] in ["L","C"])) or 
-                                  (currentLetter == "C" and (s[i+1] in ["D","M"]))
-                                 ):
-                succesLetter = s[i+1]                    
-                res += romanLttr[succesLetter] - romanLttr[currentLetter] 
-                skip=True
+        for i in range(len(s)-1):  
+            if romanLttr[s[i]] < romanLttr[s[i+1]]:
+                res -= romanLttr[s[i]] 
             else:
                 res += romanLttr[s[i]]            
-        return res
+        return res+romanLttr[s[-1]]
     
 
 print("DCXXI equals 621 => " + str(Solution().romanToInt("DCXXI")))
