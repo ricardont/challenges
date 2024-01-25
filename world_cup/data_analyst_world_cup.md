@@ -1,4 +1,4 @@
-# Problem
+# Challenge
 
 In this practice interview, you have three CSV files containing historical data of all FIFA World Cups between 1930 and 2014. The content and location of each file is available in the "Files" tab.
 
@@ -6,7 +6,10 @@ In this practice interview, you have three CSV files containing historical data 
 - `WorldCupMatches.csv` is related to all matches and their statistics: teams, stadium, score, ...
 - `WorldCupPlayers.csv` contains individual informations for each player in every match (referenced by MatchID): name, goals scored, shirt number, ...
 
-Select any language you want (click the three dots to the top-left of this editor), then answer the following questions:
+Using the language you want (SQL, R, Python, ...), build the necesary process to answer the following questions:
+
+*(you must deliver the code produced)*
+
 
 ---
 

@@ -1,4 +1,4 @@
-# Code Challenges to Polish Code Skills 
+# Code Challenges
 ## Learning selected (limited to) Topics
 - Problems core Logic
 - Python:Pandas, Ruby, Java, 
