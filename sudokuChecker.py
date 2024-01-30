@@ -1,4 +1,6 @@
 from typing import List
+
+
 class Solution:
    def isValidSudoku(board: List[List[str]]) -> str:
       # Check rows
@@ -46,9 +48,10 @@ board2 = [
 ,[".","6",".",".",".",".","2","8","."]
 ,[".",".",".","4","1","9",".",".","5"]
 ,[".",".",".",".","8",".",".","7","9"]]
-
-print("board:" + str(Solution.isValidSudoku(board)))
-print("board2:" + str(Solution.isValidSudoku(board2)))
+def get_sudoku():
+   return board
+# print("board:" + str(Solution.isValidSudoku(board)))
+# print("board2:" + str(Solution.isValidSudoku(board2)))
 
 
 # Loop over all sublist in Lists
