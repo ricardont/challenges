@@ -4,6 +4,15 @@
 # count red cards, group by country, by match
 # average red cards by country
 import pandas as pd 
+
 def Players():
     df = pd.read_csv('world_cup/WorldCupPlayers.csv')
+    return df
+
+def Matches():
+    df = pd.read_csv('world_cup/WorldCupMatches.csv')
+    return df
+
+def Cups():
+    df = pd.read_csv('world_cup/WorldCups.csv')
     return df

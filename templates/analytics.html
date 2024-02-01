@@ -1,8 +1,16 @@
 {% extends 'layout.html' %}
 {% block content %}
     <div>
-        <h1>Analytics</h1>            
-        <p>Data Analytics powered by Pandas lib.</p>
+        <h1>Data Analytics Python Pandas</h1>
+        <h2>WorlCup data assessment</h2>            
+        <p>The following inisghts are based on this datasources:</p>
+        <ul>
+            <li><a href="/matches">Matches</a></li>
+            <li><a href="/players">Players</a></li>
+            <li><a href="/cups">Cup</a></li>
+        </ul>
+        <h3>Country received the most red cards per match on average</h3>
+        <h3>Country with most combacks:Matches they were losing at half-time but ended up winning </h3>
         {{ data }}
     </div>        
 {% endblock %}
