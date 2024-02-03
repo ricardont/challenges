@@ -22,7 +22,7 @@ def RedFlagsAvg():
     df.fillna('', inplace=True)
     df_count = df[df['Event'].str.contains('R')].groupby(['Team Initials', 'MatchID'])['Event'].size().reset_index(name='RedCount')
     df_avg = df_count.groupby('Team Initials')['RedCount'].mean('RedAvg').reset_index()
-    df_avg_max = df_avg[['Team Initials', 'RedCount']].nlargest(2).reset_index()
+    df_avg_max = df_avg['RedCount'].nlargest(2).reset_index()
     return df_avg_max
     
 
