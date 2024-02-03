@@ -15,7 +15,8 @@ def sudoku():
 
 @app.route("/analytics")
 def analytics():
-    return render_template("analytics.html", title="Home/Analytics" )
+    RedFlagsAvg = worldCup.RedFlagsAvg().to_html(classes="table", table_id="data_table", header="true")
+    return render_template("analytics.html", title="Home/Analytics", tables = RedFlagsAvg )
 
 @app.route("/players")
 def players():
