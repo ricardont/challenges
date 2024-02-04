@@ -1,0 +1,41 @@
+<h1>Analytics Test</h1>
+<p>In this practice interview, you have three CSV files containing historical data of all FIFA World Cups between 1930 and 2014. The content and location of each file is available in the "Files" tab.</p>
+<ul>
+<li><code>WorldCups.csv</code> contains data about each World Cup tournament : year, hosting country, ...</li>
+<li><code>WorldCupMatches.csv</code> is related to all matches and their statistics: teams, stadium, score, ...</li>
+<li><code>WorldCupPlayers.csv</code> contains individual informations for each player in every match (referenced by MatchID): name, goals scored, shirt number, ...</li>
+</ul>
+<p>Using the language you want (SQL, R, Python, ...), build the necesary process to answer the following questions:</p>
+<p><em>(you must deliver the code produced)</em></p>
+<hr />
+<h2>1. Red cards</h2>
+<p>Which country received the most red cards per match on average?</p>
+<p>Hints:
+- All events related to players (such as red cards) during a match are in the 'Event' column of that player. For example, <code>P7' R110'</code> means the player scored a penalty kick at the 7th minute of this match and got a red card at the 110th.
+- There are two teams tied for this record, and both were only present at the 2006 World Cup. What a year!matched</p>
+<p><em>Solution</em>
+<code>code solution</code></p>
+<hr />
+<h2>2 The Comeback</h2>
+<p>Which teams had the most comebacks? (Matches where they were losing at half-time but ended up winning)</p>
+<p>Hints:
+- Be careful: you also need to count matches won by penalty shootout. This case is specified in the "Win conditions" column of the match.
+- The team you're looking for has won by comeback 10 times. Their first one was against a country that doesn't exist anymore!</p>
+<p><em>Solution</em>
+<code>code solution</code></p>
+<h2>3. The champion's curse</h2>
+<p>There is a famous malediction in the World Cup, saying that the winning team will not move past group stage on the following edition.</p>
+<p>The curse was broken by France by qualifying in 2022 after winning in 2018 (allez les bleus!). Which other teams have also accomplished this, and in which years?</p>
+<p>Hints:
+- Any team who passed group stage will play in at least one match of "Round of 16", "Quarter-finals", "Semi-finals" or "Final".
+- The curse was broken only 9 times between the first World Cup and 2014.</p>
+<p><em>Solution</em>
+<code>code solution</code></p>
+<h2>4. The underdog</h2>
+<p>There is a player who played in two World Cups, and started all his matches on the bench as a substitute. The first time he was called on the field was in the second half-time of his 8th match, and he managed to score a goal during that match. Who is this player?</p>
+<p>Hints:
+- Players who start the match as substitutes will have their "Line-up" column set to "N".
+- All events related to players (such as red cards) during a match are in the 'Event' column of that player. For example, <code>I14' G80'</code> means the player entered the field at the 14th minute of this match and scored a goal at the 80th.</p>
+<p><em>Solution</em>
+<code>code solution</code></p>
+<hr />
