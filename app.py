@@ -17,7 +17,14 @@ def sudoku():
 def analytics():
     RedFlagsAvgTable = worldCup.RedFlagsAvg()["data"].to_html( index=False, classes="table center", table_id="data_table", header="true")
     RedFlagsAvgCode = worldCup.RedFlagsAvg()["code"]
-    return render_template("analytics.html", title="Home/Analytics", RedFlagsAvgTable = RedFlagsAvgTable, RedFlagsAvgCode=RedFlagsAvgCode )
+    ComeBackTable = worldCup.ComeBack()["data"].to_html( index=False, classes="table center", table_id="data_table", header="true")
+    ComeBackCode = worldCup.ComeBack()["code"]
+    return render_template("analytics.html", title="Home/Analytics", 
+                            RedFlagsAvgTable = RedFlagsAvgTable, 
+                            RedFlagsAvgCode=RedFlagsAvgCode,
+                            ComeBackTable=ComeBackTable,
+                            ComeBackCode=ComeBackCode                            
+                           )
 
 @app.route("/players")
 def players():
