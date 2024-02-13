@@ -52,7 +52,7 @@ def ComeBack():
             ((df['Half-time Home Goals'] < df['Half-time Away Goals']) & (df['Home Team Goals'] > df['Away Team Goals'])) |    </br>
             ((df['Half-time Home Goals'] > df['Half-time Away Goals']) & (df['Home Team Goals'] < df['Away Team Goals']))</br>
             ]</br>
-        come_backs['winner'] = np.where( come_backs['Home Team Goals'] > come_backs['Away Team Goals'], come_backs['Home Team Name'], come_backs['Away Team Name']) </br>
+        come_backs['wnner'] = np.where( come_backs['Home Team Goals'] > come_backs['Away Team Goals'], come_backs['Home Team Name'], come_backs['Away Team Name']) </br>
         come_back_count = come_backs.groupby('winner')['MatchID'].size().reset_index()</br>
         highest_come_back_count = come_back_count.nlargest(2, "MatchID")</br>
     """
@@ -61,6 +61,60 @@ def ComeBack():
     out["data"] = highest_come_back_count
     out["code"] = code
     return out
+def champCurse():
+    code = """
+            # cup to get winner team, matches to get winner team details </br>
+    matches = Matches()</br>
+    cups     = Cups()</br>
+    # join cups to matches by succsor cup and by home and away team'Home Team Name' or 'Away Team Name'</br>
+    cups['Year_next_cup'] = cups['Year'] + 4 </br>
+    # join winner home team</br>
+    df_home = pd.merge(  cups, matches, </br>
+                    left_on=['Winner','Year_next_cup'], </br>
+                    right_on=['Home Team Name', 'Year']</br>
+                )</br>
+    # join away home team</br>
+    df_away = pd.merge(  cups, matches, </br>
+                    left_on=['Winner','Year_next_cup'], </br>
+                    right_on=['Away Team Name', 'Year']</br>
+                )</br>
+    # union both </br>
+    df = pd.concat([df_home, df_away])</br>
+    # filter non group stages</br>
+    df = df[df["Stage"].isin(['Round of 16', 'Quarter-finals', 'Semi-finals','Final'])]    </br>
+    df['World Cup Winner'] = df['Country'] + ' - '  + df['Year_x'].astype(str)</br>
+    df['Current Year'] = df['Year_y']</br>
+    # group by unique cases</br>
+    df = df.groupby(['World Cup Winner','Winner'])['Current Year'].unique().reset_index()</br>
+    """
+    # cup to get winner team, matches to get winner team details 
+    matches = Matches()
+    cups     = Cups()
+    # join cups to matches by succsor cup and by home and away team'Home Team Name' or 'Away Team Name'
+    cups['Year_next_cup'] = cups['Year'] + 4 
+    # join winner home team
+    df_home = pd.merge(  cups, matches, 
+                    left_on=['Winner','Year_next_cup'], 
+                    right_on=['Home Team Name', 'Year']
+                )
+    # join away home team
+    df_away = pd.merge(  cups, matches, 
+                    left_on=['Winner','Year_next_cup'], 
+                    right_on=['Away Team Name', 'Year']
+                )
+    # union both 
+    df = pd.concat([df_home, df_away])
+    # filter non group stages
+    df = df[df["Stage"].isin(['Round of 16', 'Quarter-finals', 'Semi-finals','Final'])]    
+    df['World Cup Winner'] = df['Country'] + ' - '  + df['Year_x'].astype(str)
+    df['Current Year'] = df['Year_y']
+    # group by unique cases
+    df = df.groupby(['World Cup Winner','Winner'])['Current Year'].unique().reset_index()
+    out = {}
+    out["data"] = df
+    out["code"] = code
+    return out
+    
 
 def md():
     markdown_file = 'world_cup/data_analyst_world_cup.md'
