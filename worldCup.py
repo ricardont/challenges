@@ -4,7 +4,6 @@
 # count red cards, group by country, by match
 # average red cards by country
 import pandas as pd 
-import markdown
 import os
 import numpy as np
 def Players():
