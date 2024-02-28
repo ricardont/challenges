@@ -20,14 +20,18 @@ def analytics():
     ComeBackTable = worldCup.ComeBack()["data"].to_html( index=False, classes="table center", table_id="data_table", header="true")
     ComeBackCode = worldCup.ComeBack()["code"]
     champCurseTable = worldCup.champCurse()["data"].to_html( index=False, classes="table center", table_id="data_table", header="true")
-    champCurseCode = worldCup.champCurse()["code"]  
+    champCurseCode = worldCup.champCurse()["code"] 
+    underDogTable = worldCup.underDog()["data"].to_html( index=False, classes="table center", table_id="data_table", header="true") 
+    underDogCode = worldCup.underDog()["code"] 
     return render_template("analytics.html", title="Home/Analytics", 
                             RedFlagsAvgTable = RedFlagsAvgTable, 
                             RedFlagsAvgCode=RedFlagsAvgCode,
                             ComeBackTable=ComeBackTable,
                             ComeBackCode=ComeBackCode,
                             champCurseTable = champCurseTable,
-                            champCurseCode = champCurseCode                            
+                            champCurseCode = champCurseCode,
+                            underDogTable = underDogTable,
+                            underDogCode = underDogCode                           
                            )
 
 @app.route("/players")

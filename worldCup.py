@@ -115,6 +115,34 @@ def champCurse():
     out["code"] = code
     return out
     
+def underDog():
+    # 1 players filter Lineup and g 
+    players = Players()
+    cups = Cups()
+    matches = Matches()
+    matches = pd.merge(matches, cups, left_on= 'Year', right_on='Year')
+    players = players[players['Line-up'] == 'N'] 
+    df = pd.merge(matches, players, 
+                  left_on= 'MatchID', 
+                  right_on='MatchID')
+    # cup_count = df.groupby('Player Name')['Year'].nunique('cup_count')
+    # cup_count = cup_count[cup_count['Year'] ==2]
+    # df = cup_count.merge(df, how='inner', on='Player Name')
+    # df = df.groupby(['MatchID', 'Datetime','Event'])['Player Name'].max().reset_index()
+    df =df.fillna('')
+    df['date_rank'] = df.groupby(['Player Name'])['Datetime'].rank(ascending=True)
+    df = df.sort_values(by=['Player Name','Datetime'], ascending=True)
+    # df = df[df['date_rank'] == 8 ]
+    df = df[['MatchID','Datetime','Player Name','Event','date_rank']]
+    # df = df[(df['Event'].str.contains('G'))]
+    # cup_count
+    # filter = players['Event'].str.contains('G')
+    
+    # 2 join players to matches
+    out = {}
+    out["data"] = df
+    out["code"] = 'code'
+    return out
 
 def md():
     markdown_file = 'world_cup/data_analyst_world_cup.md'
