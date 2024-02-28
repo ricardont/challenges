@@ -1,16 +1,61 @@
 {% extends 'layout.html' %}
 {% block content %}
-    <div>
-        <h1>Data Analytics Python Pandas</h1>
-        <h2>WorlCup data assessment</h2>            
-        <p>The following inisghts are based on this datasources:</p>
-        <ul>
-            <li><a href="/matches">Matches</a></li>
-            <li><a href="/players">Players</a></li>
-            <li><a href="/cups">Cup</a></li>
-        </ul>
-        <h3>Country received the most red cards per match on average</h3>
-        <h3>Country with most combacks:Matches they were losing at half-time but ended up winning </h3>
-        {{ data }}
-    </div>        
+<h1>Analytics WorlCup Test</h1>
+<p>In this practice interview, you have three CSV files containing historical data of all FIFA World Cups between 1930
+    and 2014. The content and location of each file is available in the "Files" tab.</p>
+<ul>
+    <li><a href="/cups">WorldCups.csv</a> contains data about each World Cup tournament : year, hosting country, ...
+    </li>
+    <li><a href="/matches">WorldCupMatches.csv</a> is related to all matches and their statistics: teams, stadium,
+        score, ...</li>
+    <li><a href="/players">WorldCupPlayers.csv</a> contains individual informations for each player in every match
+        (referenced by MatchID): name, goals scored, shirt number, ...</li>
+</ul>
+<p>Using the language you want (SQL, R, Python, ...), build the necesary process to answer the following questions:</p>
+<p><em>(you must deliver the code produced)</em></p>
+<hr/>
+<h2>1. Red cards</h2>
+<p>Which country received the most red cards per match on average?</p>
+<p>Hints:
+    <ul>
+        <li>All events related to players (such as red cards) during a match are in the 'Event' column of that player. For
+            example, <code>P7' R110'</code> means the player scored a penalty kick at the 7th minute of this match and got a red
+            card at the 110th.
+        </li>
+        <li>There are two teams tied for this record, and both were only present at the 2006 World Cup. What a year!matched</li> 
+    </ul>
+</p>
+<em>Solution</em>
+<div class="code">
+    {{RedFlagsAvgCode|safe}}
+</div>
+{{ RedFlagsAvgTable|safe }}
+<hr />
+<h2>2 The Comeback</h2>
+<p>Which teams had the most comebacks? (Matches where they were losing at half-time but ended up winning)</p>
+<p>Hints:
+    <ul>
+        <li>Be careful: you also need to count matches won by penalty shootout. This case is specified in the "Win conditions"
+            column of the match.</li>
+        <li>The team you're looking for has won by comeback 10 times. Their first one was against a country that doesn't exist
+            anymore!</li>
+    </ul>
+<em>Solution</em>
+<div class="code">
+    {{ComeBackCode|safe}}
+</div>
+{{ ComeBackTable|safe }}
+<h2>3. The champion's curse</h2>
+<p>There is a famous malediction in the World Cup, saying that the winning team will not move past group stage on the
+    following edition.</p>
+<p>The curse was broken by France by qualifying in 2022 after winning in 2018 (allez les bleus!). Which other teams have
+    also accomplished this, and in which years?</p>
+<p>Hints:
+    - Any team who passed group stage will play in at least one match of "Round of 16", "Quarter-finals", "Semi-finals"
+    or "Final".
+    - The curse was broken only 9 times between the first World Cup and 2014.</p>
+<div class="code">
+    {{champCurseCode|safe}}
+</div>
+{{ champCurseTable|safe }}
 {% endblock %}

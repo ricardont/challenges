@@ -1,4 +1,4 @@
-# Challenge
+# Analytics Test
 
 In this practice interview, you have three CSV files containing historical data of all FIFA World Cups between 1930 and 2014. The content and location of each file is available in the "Files" tab.
 
@@ -19,11 +19,15 @@ Which country received the most red cards per match on average?
 
 Hints:
 - All events related to players (such as red cards) during a match are in the 'Event' column of that player. For example, `P7' R110'` means the player scored a penalty kick at the 7th minute of this match and got a red card at the 110th.
-- There are two teams tied for this record, and both were only present at the 2006 World Cup. What a year!
+- There are two teams tied for this record, and both were only present at the 2006 World Cup. What a year!matched
 
+*Solution*
+```
+code solution
+```
 ---
 
-## 2. La Remontada
+## 2 The Comeback
 
 Which teams had the most comebacks? (Matches where they were losing at half-time but ended up winning)
 
@@ -31,7 +35,10 @@ Hints:
 - Be careful: you also need to count matches won by penalty shootout. This case is specified in the "Win conditions" column of the match.
 - The team you're looking for has won by comeback 10 times. Their first one was against a country that doesn't exist anymore!
 
----
+*Solution*
+```
+code solution
+```
 
 ## 3. The champion's curse
 
@@ -43,7 +50,10 @@ Hints:
 - Any team who passed group stage will play in at least one match of "Round of 16", "Quarter-finals", "Semi-finals" or "Final".
 - The curse was broken only 9 times between the first World Cup and 2014.
 
----
+*Solution*
+```
+code solution
+```
 
 ## 4. The underdog
 
@@ -53,7 +63,8 @@ Hints:
 - Players who start the match as substitutes will have their "Line-up" column set to "N".
 - All events related to players (such as red cards) during a match are in the 'Event' column of that player. For example, `I14' G80'` means the player entered the field at the 14th minute of this match and scored a goal at the 80th.
 
+*Solution*
+```
+code solution
+```
 ---
-
-#### Want more?
-Also check out [last week's interview](https://coderpad.io/blog/interviewing/tiny-interviews-world-cup-sql/) which had the same dataset loaded in a SQL database, with another set of questions to train your database skills!
